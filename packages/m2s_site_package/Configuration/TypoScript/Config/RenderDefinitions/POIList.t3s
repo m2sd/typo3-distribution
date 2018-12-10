@@ -1,0 +1,16 @@
+tt_content {
+    m2s_poi_list =< lib.M2S_ELEMENT
+    m2s_poi_list {
+        templateName = POIList
+
+        variables {
+            plugin = USER
+            plugin {
+                userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+                extensionName = PoiMap
+                pluginName = Places
+                vendorName = M2S
+            }
+        }
+    }
+}

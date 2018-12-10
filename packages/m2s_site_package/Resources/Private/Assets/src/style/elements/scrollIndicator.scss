@@ -1,0 +1,52 @@
+#scroll-indicator {
+  display: none;
+
+  @include media-query(medium) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    position: fixed;
+    top: 30%;
+    bottom: 30%;
+    left: 0;
+    min-width: 50px;
+
+    zoom: 1;
+    z-index: 999;
+
+    .offset,
+    &:after {
+      width: 2px;
+      margin: 0 auto;
+    }
+
+    .offset {
+      position: relative;
+      background: $color-default;
+      margin-bottom: 14px;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -14px;
+        left: -5px;
+        width: 10px;
+        height: 10px;
+        border: 2px solid $color-default;
+        border-radius: 7px;
+        margin: 0 auto;
+      }
+    }
+
+    &:after {
+      content: '';
+      flex-grow: 1;
+      background: $color-lowlight;
+    }
+  }
+
+  @include media-query(only screen and (min-width: 1550px)) {
+    left: 35px;
+  }
+}

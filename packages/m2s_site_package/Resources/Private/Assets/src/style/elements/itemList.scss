@@ -1,0 +1,131 @@
+.item-list {
+  .item {
+    margin-bottom: em(50px);
+
+    .img-wrap {
+      margin: em(20px) 0;
+    }
+
+    .item-body {
+      .item-headers,
+      .item-text {
+        margin: em(20px) 0;
+      }
+
+      .item-buttons {
+        margin: em(30px) 0;
+      }
+    }
+
+    .deco-line {
+      display: none;
+    }
+  }
+
+  @include media-query(medium) {
+    .item {
+      .img-wrap {
+        margin-bottom: em(20px, 18);
+      }
+
+      .item-body {
+        margin: 0;
+      }
+
+      .deco-line {
+        display: block;
+        margin-top: em(50px, 18);
+      }
+
+      &:last-child {
+        .deco-line {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include media-query(large) {
+    margin-top: em(150px, 18);
+
+    .item {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: em(100px, 18);
+
+      .img-wrap {
+        margin-bottom: 0;
+
+        &[data-responsive-bg] {
+          padding-bottom: 30.937%;
+        }
+      }
+
+      .item-image {
+        order: 1;
+        width: 55%;
+        position: relative;
+        left: 0;
+        transition: opacity 1s, left 0.5s ease-in-out, right 0.5s ease-in-out;
+      }
+
+      .item-body {
+        order: 2;
+        margin: 0;
+        width: 40%;
+        position: relative;
+        right: 0;
+        transition: opacity 1s, left 0.5s ease-in-out, right 0.5s ease-in-out;
+      }
+
+      .deco-line {
+        order: 3;
+        width: 100%;
+        margin-top: em(100px, 18);
+      }
+
+      &:nth-child(2n) {
+        .item-body {
+          order: 1;
+          left: 0;
+          right: auto;
+        }
+
+        .item-image {
+          order: 2;
+          left: auto;
+          right: 0;
+        }
+      }
+
+      &.scroll-animation {
+        overflow-x: hidden;
+
+        .item-image {
+          position: relative;
+          left: -500px;
+          opacity: 0;
+        }
+
+        .item-body {
+          position: relative;
+          right: -500px;
+          opacity: 0;
+        }
+
+        &:nth-child(2n) {
+          .item-body {
+            left: -500px;
+          }
+
+          .item-image {
+            right: -500px;
+          }
+        }
+      }
+    }
+  }
+}

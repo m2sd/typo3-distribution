@@ -1,0 +1,59 @@
+$font-context: 14px;
+
+// em conversion
+@function em-ratio($pixels, $context: $font-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  @if (unit($pixels) != unit($context)) {
+    @error 'Cannot get ratio between different units';
+  }
+
+  @return ($pixels/$context);
+}
+
+@function em($pixels, $context: $font-context) {
+  @return #{em-ratio($pixels, $context) * 1em};
+}
+
+// Break points
+$bp-medium: 640px;
+$bp-large: 1024px;
+$bp-xlarge: 1380px;
+
+// Media queries
+$mq-small-only: only screen and
+  (
+    max-width: em($bp-medium - 1px, 16)
+  );
+$mq-medium: only screen and
+  (
+    min-width: em($bp-medium, 16)
+  );
+$mq-medium-only: $mq-medium and
+  (
+    max-width: em($bp-large - 1px, 16)
+  );
+$mq-large: only screen and
+  (
+    min-width: em($bp-large, 16)
+  );
+$mq-large-only: $mq-large and
+  (
+    max-width: em($bp-xlarge - 1px, 16)
+  );
+$mq-xlarge: only screen and
+  (
+    min-width: em($bp-xlarge, 16)
+  );
+
+// Colors
+
+$color-default: #f3f3f3;
+$color-highlight: #98c222;
+$color-lowlight: #969696;
+$color-background: #3f3f3f;
+$color-disabled: #565656;

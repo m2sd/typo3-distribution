@@ -1,0 +1,10 @@
+SC_OPTIONS:
+  t3lib/class.t3lib_div.php:
+    systemLogInit: true
+    systemLog:
+      - M2S\ErrorHandling\Log\SysLogAdapter->log
+SYS:
+  debugExceptionHandler: M2S\ErrorHandling\Error\DebugExceptionHandler
+  errorHandler: M2S\ErrorHandling\Error\ErrorHandler
+  productionExceptionHandler: M2S\ErrorHandling\Error\ProductionExceptionHandler
+  systemLog: false

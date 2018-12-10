@@ -1,0 +1,43 @@
+@import 'variables';
+
+@mixin media-query($media) {
+  @if $media == small-only {
+    @media #{$mq-small-only} {
+      @content;
+    }
+  } @else if $media == medium {
+    @media #{$mq-medium} {
+      @content;
+    }
+  } @else if $media == medium-only {
+    @media #{$mq-medium-only} {
+      @content;
+    }
+  } @else if $media == large {
+    @media #{$mq-large} {
+      @content;
+    }
+  } @else if $media == large-only {
+    @media #{$mq-large-only} {
+      @content;
+    }
+  } @else if $media == xlarge {
+    @media #{$mq-xlarge} {
+      @content;
+    }
+  } @else {
+    @media #{$media} {
+      @content;
+    }
+  }
+}
+
+@mixin hide-siblings-after($selector, $target: $selector, $display: inline) {
+  #{$selector} {
+    display: $display;
+
+    & ~ #{$target} {
+      display: none;
+    }
+  }
+}

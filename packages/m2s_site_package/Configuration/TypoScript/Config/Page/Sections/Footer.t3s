@@ -1,0 +1,284 @@
+page.10.variables {
+    footer =< lib.M2S_PAGE_SECTION
+    footer {
+        templateName = Footer
+
+        settings {
+            vat = {$themes.m2s_site_package.vat}
+        }
+
+        variables {
+            contact = CONTENT
+            contact {
+                table = tt_content
+                select {
+                    pidInList = {$themes.m2s_site_package.root_uid}
+                    where = {#colPos}=21
+                }
+
+                renderObj = COA
+                renderObj {
+                    10 = TEXT
+                    10 {
+                        wrap = <strong>|</strong>
+                        field = header
+                    }
+
+                    20 = TEXT
+                    20 {
+                        wrap = <p>|</p>
+                        field = bodytext
+
+                        parseFunc =< lib.parseFunc_RTE
+                    }
+
+                    30 = TEXT
+                    30 {
+                        wrap = <p>|</p>
+                        field = subheader
+
+                        split {
+                            token = |
+                            cObjNum = 1 || 2 || n
+
+                            1 {
+                                noTrimWrap = |T/F ||
+                                current = 1
+
+                                typolink {
+                                    parameter {
+                                        wrap = tel:|
+
+                                        cObject = TEXT
+                                        cObject {
+                                            current = 1
+                                            replacement {
+                                                10 {
+                                                    search = #\s#i
+                                                    replace =
+                                                    useRegExp = 1
+                                                }
+
+                                                20 {
+                                                    search = +
+                                                    replace = 00
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    title.data = register:tel
+
+                                    ATagParams = class="tel-link"
+                                }
+                            }
+
+                            2 {
+                                cObject = COA
+                                cObject {
+                                    1 = TEXT
+                                    1 {
+                                        noTrimWrap = | | |
+                                        value = |
+                                    }
+
+                                    2 = TEXT
+                                    2 {
+                                        noTrimWrap = || |
+                                        data = LLL:EXT:m2s_site_package/Resources/Private/Language/locallang.xml:if_urgent
+                                    }
+
+                                    3 = TEXT
+                                    3 {
+                                        current = 1
+
+                                        typolink {
+                                            parameter {
+                                                wrap = tel:|
+
+                                                cObject = TEXT
+                                                cObject {
+                                                    current = 1
+                                                    replacement {
+                                                        10 {
+                                                            search = #\s#i
+                                                            replace =
+                                                            useRegExp = 1
+                                                        }
+
+                                                        20 {
+                                                            search = +
+                                                            replace = 00
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            title.data = register:tel
+
+                                            ATagParams = class="tel-link"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    40 = TEXT
+                    40 {
+                        field = header_link
+
+                        typolink {
+                            parameter.field = header_link
+
+                            title.field = header_link
+                        }
+                    }
+                }
+            }
+
+            service_nav = HMENU
+            service_nav {
+                special = directory
+                special.value = {$themes.m2s_site_package.service_uid}
+
+                1 = TMENU
+                1 {
+                    expAll = 1
+
+                    NO {
+                        doNotLinkIt = 1
+                        stdWrap.wrap = <strong class="section-title">|</strong>
+                        wrapItemAndSub = <div class="service-section">|</div>
+                    }
+                }
+
+                2 = TMENU
+                2 {
+                    wrap = <ul>|</ul>
+
+                    NO.linkWrap = <li>|</li>
+                }
+            }
+
+            partners = CONTENT
+            partners {
+                table = tt_content
+
+                select {
+                    pidInList = {$themes.m2s_site_package.root_uid}
+                    where = {#colPos}=22
+                    selectFields = header,subheader,uid,header_link
+                }
+
+                renderObj = FILES
+                renderObj {
+                    references {
+                        table = tt_content
+                        uid.field = uid
+                        fieldName = image
+                    }
+
+                    renderObj = IMAGE
+                    renderObj {
+                        file {
+                            import.dataWrap = {file:current:storage}:{file:current:identifier}
+
+                            maxW = 160m
+                            maxH = 140m
+                        }
+
+                        titleText.field = header // subheader
+                        altText.field = subheader // header
+
+                        imageLinkWrap = 1
+                        imageLinkWrap {
+                            enable = 1
+                            typolink {
+                                parameter.field = header_link
+
+                                title.field = header // subheader
+
+                                ATagParams = class="logo img-wrap"
+                            }
+                        }
+                    }
+                }
+            }
+
+            social = CONTENT
+            social {
+                table = tt_content
+
+                select {
+                    pidInList = {$themes.m2s_site_package.root_uid}
+                    where = {#colPos}=23
+                    selectFields = header,subheader,uid,header_link
+                }
+
+                renderObj = FILES
+                renderObj {
+                    references {
+                        table = tt_content
+                        uid.field = uid
+                        fieldName = image
+                    }
+
+                    renderObj = IMAGE
+                    renderObj {
+                        file {
+                            import.dataWrap = {file:current:storage}:{file:current:identifier}
+
+                            maxW = 160m
+                            maxH = 140m
+                        }
+
+                        titleText.field = header // subheader
+                        altText.field = subheader // header
+
+                        imageLinkWrap = 1
+                        imageLinkWrap {
+                            enable = 1
+                            typolink {
+                                parameter.field = header_link
+                                title.field = header // subheader
+
+                                ATagParams = class="logo img-wrap"
+                            }
+                        }
+                    }
+                }
+            }
+
+            newsletter_action = TEXT
+            newsletter_action.typolink {
+                parameter = {$themes.m2s_site_package.newsletter_uid}
+                returnLast = url
+            }
+
+            backlink = IMAGE
+            backlink {
+                file = EXT:m2s_site_package/Resources/Public/Images/login.svg
+                file {
+                    width = 100
+                    height = 20
+                }
+
+                altText = M² solutions
+                titleText = M² solutions
+
+                imageLinkWrap = 1
+                imageLinkWrap {
+                    enable = 1
+                    typolink {
+                        parameter = https://m-squared-solutions.it
+
+                        title = M² solutions
+
+                        ATagParams = class="backlink img-wrap"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+.breadcrumb {
+  display: none;
+
+  @include media-query(medium) {
+    display: block;
+    width: 100%;
+    text-transform: lowercase;
+    color: $color-lowlight;
+    margin-top: em(40px, 18);
+
+    a {
+      color: $color-lowlight;
+
+      &:hover {
+        color: $color-default;
+      }
+    }
+
+    .current {
+      color: $color-default;
+    }
+  }
+}

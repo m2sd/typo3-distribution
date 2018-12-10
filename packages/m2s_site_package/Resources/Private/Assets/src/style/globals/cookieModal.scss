@@ -1,0 +1,27 @@
+#cookie-modal {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  background: $color-disabled;
+  padding: em(20px, 18);
+  opacity: 0;
+  transition: opacity 0.5s linear;
+  z-index: 1000;
+
+  &.show {
+    opacity: 1;
+  }
+
+  p {
+    margin: 0 0 em(20px, 18);
+  }
+
+  .button-group {
+    .button.highlight {
+      margin-left: em(20px, 18);
+      background: $color-highlight;
+    }
+  }
+}

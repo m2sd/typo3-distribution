@@ -1,0 +1,10 @@
+EXT:
+  extConf:
+    backend:
+      backendFavicon: 'EXT:m2s_site_package/Resources/Public/Images/favicon-96x96.png'
+      backendLogo: 'EXT:m2s_site_package/Resources/Public/Images/backend-logo.png'
+      loginBackgroundImage: 'EXT:m2s_site_package/Resources/Public/Images/background.jpg'
+      loginHighlightColor: '#515151'
+      loginLogo: 'EXT:m2s_site_package/Resources/Public/Images/login.png'
+FE:
+  hidePagesIfNotTranslatedByDefault: 1

@@ -1,0 +1,25 @@
+mod.web_layout.BackendLayouts {
+    m2s_list {
+        title = List view
+        iconIdentifier = tx-m2s-site-layout-list
+        config {
+            backend_layout {
+                colCount = 1
+                rowCount = 1
+                rows {
+                    1 {
+                        columns {
+                            1 {
+                                name = Content
+                                colPos = 0
+                                allowed {
+                                    CType = m2s_textpic,m2s_citation,m2s_list
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

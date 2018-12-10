@@ -1,0 +1,50 @@
+{
+  "name": "m2s_site_package",
+  "version": "0.1.0",
+  "description": "Modularized assets for Typo3",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules --config Resources/Private/Assets/build/webpack/base.conf.js",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config Resources/Private/Assets/build/webpack/generate.conf.js",
+    "build:analyze": "ANALYZE_BUNDLES=on npm run build",
+    "lint": "eslint --config Resources/Private/Assets/build/plugins/eslint.js Resources/Private/Assets/src",
+    "lint:fix": "npm run lint -- --fix",
+    "lint:check": "eslint --print-config Resources/Private/Assets/src --config Resources/Private/Assets/build/plugins/eslint.js | eslint-config-prettier-check"
+  },
+  "author": "Michael Marcenich <info@m-squared-solutions.it> (https://m-squared-solutions.it)",
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "autoprefixer": "^9.4.2",
+    "babel-loader": "^8.0.4",
+    "clean-webpack-plugin": "^1.0.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^2.0.0",
+    "eslint": "^5.10.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-prettier": "^3.0.0",
+    "file-loader": "^2.0.0",
+    "imagemin-webpack-plugin": "^2.3.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.4.0",
+    "prettier": "^1.15.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "typoscript-webpack-plugin": "^1.2.6",
+    "webpack": "^4.27.1",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "flatpickr": "^4.5.2",
+    "just-debounce-it": "^1.1.0",
+    "just-throttle": "^1.1.0",
+    "normalize.css": "^8.0.1",
+    "typed.js": "^2.0.9"
+  }
+}

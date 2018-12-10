@@ -1,0 +1,100 @@
+lib {
+    RESPONSIVE_IMG_FROM_URL = IMAGE
+    RESPONSIVE_IMG_FROM_URL {
+        file {
+            import.current = 1
+        }
+
+        altText.field = alternative // title
+        titleText.field = title // alternative
+
+        layoutKey = srcset
+        layout {
+            srcset {
+                element = <img src="###SRC###" srcset="###SOURCECOLLECTION###" ###PARAMS### ###ALTPARAMS######SELFCLOSINGTAGSLASH###>
+                source = |*|###SRC### ###SRCSETCANDIDATE###,|*|###SRC### ###SRCSETCANDIDATE###
+            }
+        }
+
+        sourceCollection {
+            small {
+                width = 640c
+                srcsetCandidate = 640w
+            }
+
+            medium {
+                width = 1024c
+                srcsetCandidate = 1024w
+            }
+
+            large {
+                width = 1200c
+                srcsetCandidate = 1200w
+            }
+
+            xlarge {
+                width = 2048c
+                srcsetCandidate = 2048w
+            }
+        }
+    }
+
+    RESPONSIVE_IMG < .RESPONSIVE_IMG_FROM_URL
+    RESPONSIVE_IMG.file.treatIdAsReference = 1
+
+    RESPONSIVE_IMG_STYLIZED < .RESPONSIVE_IMG
+    RESPONSIVE_IMG_STYLIZED {
+        sourceCollection {
+            medium {
+                width = 1024c
+                height = 480c
+                srcsetCandidate = 1024w
+            }
+
+            large {
+                width = 1200c
+                height = 562c
+                srcsetCandidate = 1200w
+            }
+
+            xlarge {
+                width = 2048c
+                height = 960c
+                srcsetCandidate = 2048w
+            }
+        }
+    }
+
+    M2S_ELEMENT = FLUIDTEMPLATE
+    M2S_ELEMENT {
+        templateName = Default
+
+        layoutRootPaths {
+            10 = EXT:frontend/Resources/Private/Layouts
+            20 = EXT:m2s_site_package/Resources/Private/Layouts/Elements
+        }
+        partialRootPaths {
+            10 = EXT:frontend/Resources/Private/Partials
+            20 = EXT:m2s_site_package/Resources/Private/Partials
+        }
+        templateRootPaths {
+            10 = EXT:frontend/Resources/Private/Templates
+            20 = EXT:m2s_site_package/Resources/Private/Templates/Elements
+        }
+    }
+
+    M2S_PAGE_SECTION = FLUIDTEMPLATE
+    M2S_PAGE_SECTION {
+        templateName = Default
+
+        layoutRootPaths {
+            10 = EXT:m2s_site_package/Resources/Private/Layouts/Page
+        }
+        partialRootPaths {
+            10 = EXT:m2s_site_package/Resources/Private/Partials
+        }
+        templateRootPaths {
+            10 = EXT:m2s_site_package/Resources/Private/Templates/Page
+        }
+    }
+}

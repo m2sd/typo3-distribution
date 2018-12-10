@@ -1,0 +1,14 @@
+mod.wizards.newContentElement.wizardItems.common {
+    elements {
+        m2s_contact {
+            iconIdentifier = content-form
+            title = Contact info
+            description = Address, Telephone and Email
+            tt_content_defValues {
+                CType = m2s_contact
+            }
+        }
+    }
+
+    show := addToList(m2s_contact)
+}

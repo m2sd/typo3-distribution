@@ -1,0 +1,17 @@
+EXTCONF:
+  realurl:
+    default_config:
+      preVars:
+        - GETvar: no_cache
+          valueMap: { nc: 1 }
+          noMatch: bypass
+        - GETvar: L
+          valueMap:
+            '%conf(EXTCONF.m2s_site_package.defaultLanguageSegment)%': 0
+            '%conf(EXTCONF.m2s_site_package.secondLanguageSegment)%': 1
+            '%conf(EXTCONF.m2s_site_package.thirdLanguageSegment)%': 2
+          valueDefault: '%conf(EXTCONF.m2s_site_package.defaultLanguageSegment)%'
+      pagePath:
+        rootpage_id: '%conf(EXTCONF.m2s_site_package.rootUid)%'
+        expireDays: 7
+    '%conf(EXTCONF.m2s_site_package.hostName)%': 'default_config'

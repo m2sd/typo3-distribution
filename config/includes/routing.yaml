@@ -1,0 +1,21 @@
+EXTCONF:
+  realurl:
+    default_config:
+      init:
+        enableCHashCache: true
+        appendMissingSlash: 'ifNotFile'
+        adminJumpToBackend: true
+        enableUrlDecodeCache: true
+        enableUrlEncodeCache: true
+        emptyUrlReturnValue: /
+        disableErrorLog: true
+      pagePath:
+        rootpage_id: '1'
+        type: user
+        userFunc: 'Tx\Realurl\UriGeneratorAndResolver->main'
+        spaceCharacter: '-'
+        languageGetVar: 'L'
+        expireDays: 3
+        dontResolveShortcuts: false
+      fileName:
+        defaultToHTMLsuffixOnPrev: false

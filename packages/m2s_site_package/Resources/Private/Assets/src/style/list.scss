@@ -1,0 +1,12 @@
+// sass variables and utilities
+@import 'environment';
+
+// scoped page styles
+#page {
+  // root components
+  .main {
+    .page-content {
+      @import 'elements/itemList';
+    }
+  }
+}

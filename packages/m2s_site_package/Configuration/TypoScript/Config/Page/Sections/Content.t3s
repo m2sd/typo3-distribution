@@ -1,0 +1,92 @@
+page.10.variables {
+    content = COA
+    content {
+        10 = CASE
+        10 {
+            key {
+                data = levelfield:-2,backend_layout_next_level,slide
+                override.field = backend_layout
+            }
+
+            default = COA
+            default {
+                10 = COA
+                10 {
+                    wrap = <div id="breadcrumb" class="breadcrumb">|</div>
+
+                    10 = HMENU
+                    10 {
+                        special = rootline
+                        special.range = 0|-1
+
+                        1 = TMENU
+                        1 {
+                            NO {
+                                after {
+                                    cObject = TEXT
+                                    cObject {
+                                        noTrimWrap = | | |
+                                        value = |
+                                    }
+                                }
+
+                                ATagTitle.field = subtitle // title
+                            }
+
+                            CUR < .NO
+                            CUR = 1
+                            CUR {
+                                after >
+                                doNotLinkIt = 1
+                                linkWrap = <span class="current">|</span>
+                            }
+                        }
+                    }
+                }
+
+                20 =< styles.content.get
+            }
+
+            pagets__m2s_root = COA
+            pagets__m2s_root {
+                10 =< lib.M2S_ELEMENT
+                10 {
+                    templateName = ContentMenu
+
+                    dataProcessing {
+                        10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+                        10 {
+                            table = pages
+
+                            pidInList = {$themes.m2s_site_package.root_uid}
+                            where = {#nav_hide}=0
+
+                            as = pages
+
+                            dataProcessing {
+                                10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                                10 {
+                                    references {
+                                        table = pages
+                                        fieldName = media
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                20 =< styles.content.get
+                20.select.where = {#colPos}=1
+            }
+        }
+    }
+
+    sharedContent =< styles.content.get
+    sharedContent {
+        select {
+            pidInList = {$themes.m2s_site_package.root_uid}
+            where = {#colPos}=20
+        }
+    }
+}

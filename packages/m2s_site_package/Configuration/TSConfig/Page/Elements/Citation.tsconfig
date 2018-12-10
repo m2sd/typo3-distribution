@@ -1,0 +1,14 @@
+mod.wizards.newContentElement.wizardItems.common {
+    elements {
+        m2s_citation {
+            iconIdentifier = content-quote
+            title = Quote
+            description = Decorative Quote
+            tt_content_defValues {
+                CType = m2s_citation
+            }
+        }
+    }
+
+    show := addToList(m2s_citation)
+}

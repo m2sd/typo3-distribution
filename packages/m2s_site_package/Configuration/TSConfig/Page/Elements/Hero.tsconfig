@@ -1,0 +1,14 @@
+mod.wizards.newContentElement.wizardItems.common {
+    elements {
+        m2s_hero {
+            iconIdentifier = content-menu-recently-updated
+            title = Hero Overlay
+            description = Text overlay for header image (with typing animation).
+            tt_content_defValues {
+                CType = m2s_hero
+            }
+        }
+    }
+
+    show := addToList(m2s_hero)
+}

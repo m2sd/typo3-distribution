@@ -1,0 +1,85 @@
+.hero {
+  height: 100vh;
+  background-size: cover;
+  margin: 0;
+  position: relative;
+  z-index: auto;
+
+  .img-container.gallery {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    z-index: 10;
+
+    .img-wrap[data-responsive-bg] {
+      padding: 0;
+      height: 100vh;
+      background-size: cover;
+    }
+
+    .paging {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: em(20px);
+
+      .paging-item {
+        margin-top: em(5px) !important;
+        margin-bottom: em(5px) !important;
+      }
+
+      @include media-query(medium) {
+        max-width: none;
+        height: em(35px, 18);
+
+        .paging-item {
+          margin-top: em(10px) !important;
+          margin-bottom: em(10px) !important;
+        }
+      }
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: em(40px, 18);
+    left: 50%;
+    margin-left: em(-15px, 18);
+    height: em(50px, 18);
+    width: em(30px, 18);
+    background: url('~@/images/mouse.svg') center / contain no-repeat;
+    z-index: 100;
+  }
+
+  .places-map {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    .si-wrapper-top {
+      font-size: 14px;
+
+      .si-content-wrapper {
+        padding: em(10px);
+        background-color: $color-background;
+
+        .place-card {
+          margin: 0;
+
+          p,
+          .img-wrap {
+            margin: em(10px) 0;
+          }
+        }
+      }
+
+      .si-pointer-bg-top {
+        border-top-color: $color-background;
+      }
+    }
+  }
+}

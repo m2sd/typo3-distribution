@@ -1,0 +1,105 @@
+.main {
+  ul {
+    margin: em(20px) 0;
+  }
+
+  .page-content {
+    padding: 0 em(20px);
+    margin-top: em(72px);
+
+    .element {
+      width: 100%;
+    }
+  }
+
+  .hero + .page-content {
+    margin-top: 0;
+  }
+
+  @include media-query(medium) {
+    ul {
+      margin: em(50px, 18) 0;
+    }
+
+    .page-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      padding: 0 em(50px, 18);
+      margin-left: auto;
+      margin-right: auto;
+
+      .element.card {
+        position: relative;
+        width: 48.44%;
+
+        &.frame1 {
+          padding-top: em(35px);
+        }
+
+        &.frame2 {
+          padding-bottom: em(35px);
+        }
+
+        &.frame3 {
+          padding: em(35px) 0;
+        }
+
+        .deco-line {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+        }
+
+        .std-content {
+          margin-left: auto;
+          margin-right: auto;
+
+          & + .deco-line {
+            top: auto;
+            bottom: 0;
+          }
+        }
+
+        & + .element.card {
+          margin-left: 3.12%;
+        }
+      }
+
+      &.shared {
+        margin-top: em(100px, 18);
+      }
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: space-between;
+      min-width: em(200px, 18);
+    }
+  }
+
+  @include media-query(large) {
+    .page-content {
+      max-width: 1380px;
+      padding: 0 em(210px, 18);
+
+      .expand,
+      .deco-line {
+        margin-right: em(-160px, 18);
+        margin-left: em(-160px, 18);
+      }
+
+      .deco-line {
+        width: 1280px;
+      }
+
+      .expand {
+        .deco-line {
+          width: 100%;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

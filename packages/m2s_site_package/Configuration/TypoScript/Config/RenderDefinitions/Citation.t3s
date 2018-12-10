@@ -1,0 +1,4 @@
+tt_content {
+    m2s_citation =< lib.M2S_ELEMENT
+    m2s_citation.templateName = Citation
+}

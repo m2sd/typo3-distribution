@@ -1,0 +1,78 @@
+.button {
+  display: inline-block;
+  font-size: em(14px);
+  line-height: 2;
+  height: 2em;
+  color: $color-default;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: 1px solid $color-default;
+  background-color: transparent;
+  padding: 0 em(10px, 14);
+  cursor: pointer;
+
+  i {
+    line-height: 2;
+  }
+
+  &:hover {
+    color: $color-lowlight;
+    border-color: $color-lowlight;
+
+    i:before {
+      color: $color-lowlight;
+    }
+  }
+
+  &.small {
+    font-size: em(12px);
+  }
+
+  &.large {
+    font-size: em(16px);
+  }
+
+  &.wide {
+    padding: 0 em(20px, 14);
+  }
+
+  &.no-border {
+    border: none;
+
+    &:hover {
+      border: none;
+    }
+  }
+
+  span ~ i {
+    margin-left: em(10px);
+  }
+
+  .text-medium,
+  .text-large,
+  .text-xlarge,
+  .btn-icon-medium,
+  .btn-icon-large,
+  .btn-icon-xlarge {
+    display: none;
+  }
+
+  @each $media in medium, large, xlarge {
+    @include media-query($media) {
+      @include hide-siblings-after('.text-#{$media}', span);
+      @include hide-siblings-after('.btn-icon-#{$media}', i);
+    }
+  }
+
+  @include media-query(large) {
+    font-size: em(14px, 18);
+
+    &.small {
+      font-size: em(12px, 18);
+    }
+
+    &.large {
+      font-size: em(16px, 18);
+    }
+  }
+}

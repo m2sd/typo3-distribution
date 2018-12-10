@@ -1,0 +1,23 @@
+tt_content {
+    m2s_textpic =< lib.M2S_ELEMENT
+    m2s_textpic {
+        templateName = StdElement
+
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+            10.references.fieldName = image
+        }
+
+        variables {
+            isFirst = TEXT
+            isFirst {
+                value = 1
+
+                if {
+                    value = 1
+                    equals.data = cObj:parentRecordNumber
+                }
+            }
+        }
+    }
+}

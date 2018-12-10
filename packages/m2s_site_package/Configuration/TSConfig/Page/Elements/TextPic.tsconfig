@@ -1,0 +1,14 @@
+mod.wizards.newContentElement.wizardItems.common {
+    elements {
+        m2s_textpic {
+            iconIdentifier = content-textpic
+            title = Standardelement
+            description = Multifunctional element
+            tt_content_defValues {
+                CType = m2s_textpic
+            }
+        }
+    }
+
+    show := addToList(m2s_textpic)
+}

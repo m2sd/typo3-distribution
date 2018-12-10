@@ -1,0 +1,188 @@
+page.10.variables {
+    header =< lib.M2S_PAGE_SECTION
+    header {
+        templateName = Header
+
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+            10 {
+                table = tt_content
+
+                where = {#colPos}=10
+                pidInList = {$themes.m2s_site_package.root_uid}
+                max = 1
+
+                as = logo
+
+                dataProcessing {
+                    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                    10.references {
+                        table = tt_content
+                        fieldName = image
+                    }
+                }
+            }
+        }
+
+        variables {
+            request_action = TEXT
+            request_action.typolink {
+                parameter = {$themes.m2s_site_package.request_uid}
+                returnLast = url
+            }
+
+            booking_action = TEXT
+            booking_action.typolink {
+                parameter = {$themes.m2s_site_package.booking_uid}
+                returnLast = url
+            }
+
+            main_nav = HMENU
+            main_nav {
+                entryLevel = 0
+
+                1 = TMENU
+                1 {
+                    expAll = 1
+                    wrap = <ul class="main-navigation accordion">|</ul>
+
+                    NO {
+                        doNotLinkIt = 1
+                        wrapItemAndSub = <li>|</li>
+                        allWrap = <span class="toggle">|</span>
+                        ATagTitle.field = title
+                    }
+
+                    ACT < .NO
+                    ACT = 1
+                    ACT.wrapItemAndSub = <li class="active">|</li>
+
+                    CUR < .ACT
+                    CUR = 1
+                }
+
+                2 < .1
+                2 {
+                    wrap = <ul class="inner">|</ul>
+
+                    NO {
+                        allWrap >
+                        doNotLinkIt >
+                    }
+                    ACT {
+                        allWrap >
+                        doNotLinkIt >
+                    }
+                    CUR {
+                        allWrap >
+                        doNotLinkIt >
+                    }
+                }
+            }
+
+            lang_nav = HMENU
+            lang_nav {
+                special = language
+                special.value = 0,1,2
+                special.normalWhenNoLanguage = 0
+
+                1 = TMENU
+                1 {
+                    wrap = <ul class="lang-navigation">|</ul>
+
+                    NO {
+                        linkWrap = <li>|</li>
+                        doNotLinkIt = 1
+                        stdWrap {
+                            override = IT || DE || EN
+                            typolink {
+                                parameter.data = page:uid
+                                additionalParams = &L=0 || &L=1 || &L=2
+                                ATagParams = hreflang="it-IT" || hreflang="de-DE" || hreflang="en-US"
+                                addQueryString = 1
+                                addQueryString.exclude = L,id
+                                addQueryString.method = GET
+                            }
+                        }
+                    }
+
+                    ACT < .NO
+                    ACT = 1
+                    ACT {
+                        linkWrap = <li class="active disabled">|</li>
+                        doNotLinkIt = 1
+                        stdWrap.typolink >
+                    }
+
+                    USERDEF1 = 1
+                    USERDEF1 {
+                        doNotLinkIt = 1
+                        doNotShowLink = 1
+                    }
+
+                    USERDEF2 < .USERDEF1
+                    USERDEF2 = 1
+                }
+            }
+
+            tel_link = CONTENT
+            tel_link {
+                table = tt_content
+                select {
+                    pidInList = {$themes.m2s_site_package.root_uid}
+                    where = {#colPos}=21
+                    selectFields = subheader
+                    max = 1
+                }
+
+                renderObj = COA
+                renderObj {
+                    1 = LOAD_REGISTER
+                    1 {
+                        tel = TEXT
+                        tel {
+                            field = subheader
+                            split {
+                                token = |
+                                returnKey = 0
+                            }
+                        }
+                    }
+
+                    2 = TEXT
+                    2 {
+                        data = register:tel
+                        typolink {
+                            parameter {
+                                wrap = tel:|
+
+                                cObject = TEXT
+                                cObject {
+                                    data = register:tel
+                                    replacement {
+                                        10 {
+                                            search = #\s#i
+                                            replace =
+                                            useRegExp = 1
+                                        }
+
+                                        20 {
+                                            search = +
+                                            replace = 00
+                                        }
+                                    }
+                                }
+                            }
+
+                            title.data = register:tel
+
+                            ATagParams = class="tel-link"
+                        }
+                    }
+
+                    3 = RESTORE_REGISTER
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+.citation {
+  max-width: 670px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: em(20px);
+  line-height: em-ratio(25, 20);
+  background: url('~@/images/leaf.svg') center / contain no-repeat;
+  padding: em(20px, 20) 0;
+
+  footer {
+    font-size: em(14px, 20);
+    line-height: em-ratio(20);
+    margin-top: em(12px);
+  }
+
+  @include media-query(medium) {
+    font-size: em(40px, 18);
+    padding: em(117px, 40) 0;
+
+    footer {
+      font-size: em(18px, 40);
+      margin-top: em(40px, 18);
+    }
+  }
+}

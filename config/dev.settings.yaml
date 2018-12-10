@@ -1,0 +1,15 @@
+imports:
+    - { resource: settings.yaml, exclude: [LOG] }
+    - { resource: 'includes/dev/*.yaml', type: glob }
+
+SYS:
+    Objects:
+        TYPO3\CMS\Core\Configuration\ConfigurationManager:
+            className: 'Helhum\TYPO3\ConfigHandling\Xclass\ConfigurationManager'
+        TYPO3\CMS\Install\Controller\Action\Tool\AllConfiguration:
+            className: 'Helhum\TYPO3\ConfigHandling\Xclass\AllConfiguration'
+BE:
+    sessionTimeout: 31536000
+MAIL:
+    transport: 'mbox'
+    transport_mbox_file: '%env(TYPO3_PATH_COMPOSER_ROOT)%/var/log/sent-mails.log'

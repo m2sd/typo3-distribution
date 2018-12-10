@@ -1,0 +1,38 @@
+mod.web_layout.BackendLayouts {
+    m2s_places {
+        title = Points of interest
+        icon = EXT:poi_map/Resources/Public/Icons/Extension.png
+        config {
+            backend_layout {
+                colCount = 1
+                rowCount = 2
+                rows {
+                    1 {
+                        columns {
+                            1 {
+                                name = Header map (overrides headerimage)
+                                colPos = 100
+                                allowed {
+                                    CType = m2s_poi_map
+                                }
+                                maxitems = 1
+                            }
+                        }
+                    }
+
+                    2 {
+                        columns {
+                            1 {
+                                name = Content
+                                colPos = 0
+                                allowed {
+                                    CType = m2s_textpic,m2s_citation,m2s_poi_list
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

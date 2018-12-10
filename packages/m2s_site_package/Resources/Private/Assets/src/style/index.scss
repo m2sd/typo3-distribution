@@ -1,0 +1,33 @@
+/** sass variables and utilities **/
+@import 'environment';
+
+/** styles **/
+// page setup
+@import 'globals/page';
+// flatpickr customization
+@import 'globals/flatpickr';
+// cookie modal
+@import 'globals/cookieModal';
+
+// scoped page styles
+#page {
+  // reusable elements
+  @import 'elements/button';
+  @import 'elements/decoLine';
+  @import 'elements/citation';
+  @import 'elements/stdContent';
+  @import 'elements/imageWrap';
+
+  // singleton elements
+  @import 'elements/scrollIndicator';
+  @import 'elements/breadcrumb';
+
+  // page components
+  @import 'sections/header';
+  @import 'sections/main';
+  @import 'sections/hero';
+  @import 'sections/footer';
+}
+
+// print styles
+@import 'globals/print';

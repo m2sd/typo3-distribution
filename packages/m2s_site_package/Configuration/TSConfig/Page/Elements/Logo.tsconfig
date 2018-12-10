@@ -1,0 +1,14 @@
+mod.wizards.newContentElement.wizardItems.common {
+    elements {
+        m2s_logo {
+            iconIdentifier = content-info
+            title = Logo
+            description = A small image representing a company or a product
+            tt_content_defValues {
+                CType = m2s_logo
+            }
+        }
+    }
+
+    show := addToList(m2s_logo)
+}

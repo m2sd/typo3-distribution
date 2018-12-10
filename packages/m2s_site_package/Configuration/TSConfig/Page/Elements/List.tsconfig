@@ -1,0 +1,14 @@
+mod.wizards.newContentElement.wizardItems.common {
+    elements {
+        m2s_list {
+            iconIdentifier = tx-m2s-site-icon
+            title = List
+            description = Blog post list
+            tt_content_defValues {
+                CType = m2s_list
+            }
+        }
+    }
+
+    show := addToList(m2s_list)
+}

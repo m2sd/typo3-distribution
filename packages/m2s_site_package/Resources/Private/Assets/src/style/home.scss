@@ -1,0 +1,9 @@
+// sass variables and utilities
+@import 'environment';
+
+// scoped page styles
+#page {
+  // root components
+  @import 'elements/heroContent';
+  @import 'elements/contentMenu';
+}

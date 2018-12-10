@@ -1,0 +1,41 @@
+.hero {
+  .overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 36px;
+    bottom: 36px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+
+    .content {
+      margin: em(50px) em(20px);
+
+      .intro {
+        font-size: em(20px);
+        font-weight: 300;
+        line-height: em(25px, 20);
+      }
+
+      .h1 {
+        margin: 0;
+      }
+
+      p,
+      .button {
+        margin: em(15px) 0;
+      }
+    }
+  }
+
+  @include media-query(medium) {
+    .overlay {
+      .content {
+        max-width: em(535px, 18);
+        margin-left: 50%;
+      }
+    }
+  }
+}

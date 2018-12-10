@@ -1,0 +1,25 @@
+mod.web_layout.BackendLayouts {
+    m2s_page {
+        title = Page
+        iconIdentifier = tx-m2s-site-layout-page
+        config {
+            backend_layout {
+                colCount = 1
+                rowCount = 1
+                rows {
+                    1 {
+                        columns {
+                            1 {
+                                name = Content
+                                colPos = 0
+                                allowed {
+                                    CType = m2s_textpic,m2s_citation
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

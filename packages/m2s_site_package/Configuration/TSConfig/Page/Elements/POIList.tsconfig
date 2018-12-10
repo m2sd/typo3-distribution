@@ -1,0 +1,14 @@
+mod.wizards.newContentElement.wizardItems.common {
+    elements {
+        m2s_poi_list {
+            iconIdentifier = tx-poimap-place-default
+            title = Points of interest list
+            description = A list of place records
+            tt_content_defValues {
+                CType = m2s_poi_list
+            }
+        }
+    }
+
+    show := addToList(m2s_poi_list)
+}

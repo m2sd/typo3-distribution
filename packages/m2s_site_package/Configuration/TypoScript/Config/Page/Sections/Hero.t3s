@@ -1,0 +1,67 @@
+page.10.variables {
+    hero = CASE
+    hero {
+        key {
+            data = levelfield:-2,backend_layout_next_level,slide
+            override.field = backend_layout
+        }
+
+        default =< lib.M2S_PAGE_SECTION
+        default {
+            templateName = Hero
+
+            dataProcessing {
+                10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                10.references.fieldName = media
+            }
+        }
+
+        pagets__m2s_root =< lib.M2S_PAGE_SECTION
+        pagets__m2s_root {
+            templateName = Hero
+
+            dataProcessing {
+                10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                10.references.fieldName = media
+            }
+
+            variables {
+                content =< styles.content.get
+                content {
+                    select {
+                        where = {#colPos}=3
+                        max = 1
+                    }
+
+                    renderObj =< lib.M2S_PAGE_SECTION
+                    renderObj {
+                        templateName = HeroContent
+
+                        dataProcessing {
+                            10 = TYPO3\CMS\Frontend\DataProcessing\SplitProcessor
+                            10 {
+                                if.isTrue.field = rowDescription
+                                delimiter.char = 10
+                                fieldName = rowDescription
+                                removeEmptyEntries = 1
+                                filterIntegers = 0
+                                filterUnique = 1
+                                as = slogans
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        pagets__m2s_places < .default
+        pagets__m2s_places.variables {
+            map =< styles.content.get
+            map {
+                select.where = {#colPos}=100
+
+                renderObj =< tt_content.m2s_poi_map.variables.plugin
+            }
+        }
+    }
+}

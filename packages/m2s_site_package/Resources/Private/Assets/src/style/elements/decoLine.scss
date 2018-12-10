@@ -1,0 +1,30 @@
+.deco-line {
+  width: 100%;
+  background: url('~@/images/leaf_small.svg') center / contain no-repeat;
+  height: em(35px);
+  position: relative;
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: em(20px);
+    height: 2px;
+    background: $color-disabled;
+    width: 35%;
+  }
+  &:before {
+    left: 0;
+  }
+  &:after {
+    right: 0;
+  }
+
+  @include media-query(medium) {
+    &:before,
+    &:after {
+      width: 40%;
+    }
+  }
+}

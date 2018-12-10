@@ -1,0 +1,87 @@
+page {
+    headerData {
+        5 = TEXT
+        5 {
+            value (
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-{$themes.m2s_site_package.gtm_id}');</script>
+<!-- End Google Tag Manager -->
+            )
+            if.isTrue = {$themes.m2s_site_package.gtm_id}
+        }
+        # canonical link
+        10 = TEXT
+        10 {
+            wrap = <link rel="canonical" href="|" />
+            typolink {
+                parameter.field = uid
+                returnLast = url
+                forceAbsoluteUrl = 1
+                addQueryString.exclude = cHash,type
+            }
+        }
+
+        # language alternatives
+        20 = HMENU
+        20 {
+            special = language
+            special.value = 0,1
+            1 = TMENU
+            1 {
+                NO {
+                    doNotLinkIt = 1
+                    stdWrap.cObject = COA
+                    stdWrap.cObject {
+                        1 = TEXT
+                        1 {
+                            wrap = <link rel="alternate" hreflang="|"
+                            value = it || de
+                        }
+
+                        2 = TEXT
+                        2 {
+                            noTrimWrap = | href="|" />|
+
+                            typolink {
+                                parameter.data = page:uid
+                                additionalParams = &L=0 || &L=1
+                                forceAbsoluteUrl = 1
+                                returnLast = url
+                            }
+                        }
+                    }
+                }
+
+                ACT = 1
+                ACT {
+                    doNotLinkIt = 1
+                    doNotShowLink = 1
+                }
+            }
+        }
+    }
+
+    meta {
+        X-UA-Compatible = IE=edge
+        X-UA-Compatible.attribute = http-equiv
+
+        robots = NOODP
+        msnbot = NOODP
+        googlebot = NOODP
+
+        format-detection = telephone=no
+
+        viewport = width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no
+
+        author = Michael Marcenich | M² solutions
+        author.override.data = levelfield:-1,author,slide
+
+        keywords.data = levelfield:-1,keywords,slide
+
+        description.data = levelfield:-1,description,slide
+    }
+}

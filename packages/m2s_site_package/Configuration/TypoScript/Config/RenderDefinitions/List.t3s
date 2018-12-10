@@ -1,0 +1,11 @@
+tt_content {
+    m2s_list =< lib.M2S_ELEMENT
+    m2s_list {
+        templateName = Plugin
+
+        variables {
+            plugin = TEXT
+            plugin.value = <strong style="color: red; backgound: yellow;">Not yet implemented!</strong>
+        }
+    }
+}

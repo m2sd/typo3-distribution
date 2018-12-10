@@ -1,0 +1,26 @@
+page {
+    config {
+        doctype = html5
+
+        metaCharset = utf-8
+        disablePrefixComment = 1
+
+        removeDefaultJS = 1
+        removeDefaultCss = 1
+        inlineStyle2TempFile = 0
+
+        extTarget = _blank
+
+        pageTitleFirst = 1
+
+        pageTitleSeparator = -
+        pageTitleSeparator.noTrimWrap = | | |
+
+        prefixLocalAnchors = all
+        baseURL = {$themes.m2s_site_package.base_url}
+        absRelPath = /
+        tx_realurl_enable = 1
+    }
+
+    shortcutIcon = EXT:m2s_site_package/Resources/Public/Images/favicon-96x96.png
+}

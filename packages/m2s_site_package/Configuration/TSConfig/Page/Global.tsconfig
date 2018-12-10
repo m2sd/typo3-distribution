@@ -1,0 +1,27 @@
+mod.SHARED {
+    defaultLanguageFlag = en
+    defaultLanguageLabel = English
+}
+
+TCEFORM {
+    pages.author_email.types.4.label = Link text
+
+    tt_content {
+        # m2s_poi_list
+        layout.types.m2s_poi_list.removeItems = 2,3
+        header_layout.types.m2s_textpic.removeItems = 4,5,100
+        imageorient.types.m2s_textpic {
+            keepItems = 0,8
+            altLabels {
+                0 = above
+                8 = below
+            }
+        }
+        frame_class.removeItems = ruler-after,indent,indent-right,indent-left,none
+        space_before_class.removeItems = extra-small,small,medium,large,extra-large
+        pi_flexform.types.m2s_poi_list.m2s_poi_list.sDEF.switchableControllerActions.keepItems = Place->list
+
+        # m2s_poi_map
+        pi_flexform.types.m2s_poi_map.m2s_poi_map.sDEF.switchableControllerActions.keepItems = Place->map
+    }
+}

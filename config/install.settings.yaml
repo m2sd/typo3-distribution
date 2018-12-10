@@ -1,0 +1,71 @@
+imports:
+  - { resource: 'InstallSteps.yaml', type: console }
+
+databaseData:
+  arguments:
+    siteName:
+      default: 'M² solutions typo3 starter distro'
+
+defaultConfiguration:
+  arguments:
+    siteSetupType:
+      value: site
+
+setupProject:
+  type: Helhum\TYPO3\ConfigHandling\Install\Action\SetupConfigurationAction
+  description: 'Set up project settings'
+  customSettings:
+    arguments:
+      hostName:
+        type: string
+        value: '%env(TYPO3_INSTALL_HOST_NAME)%'
+        description: 'Hostname for the new site'
+        configPath: 'EXTCONF.m2s_site_package.hostName'
+        default: 'localhost'
+
+      rootUid:
+        type: string
+        value: '%env(TYPO3_INSTALL_ROOT_UID)%'
+        description: 'Page UID of the page with the root template'
+        configPath: 'EXTCONF.m2s_site_package.rootUid'
+        default: '1'
+
+      defaultLanguageSegment:
+        type: string
+        value: '%env(TYPO3_INSTALL_DEFAULT_LANG_SEGMENT)%'
+        description: 'URL segment for the default language'
+        configPath: 'EXTCONF.m2s_site_package.defaultLanguageSegment'
+        default: ''
+
+      secondLanguageSegment:
+        type: string
+        value: '%env(TYPO3_INSTALL_SECOND_LANG_SEGMENT)%'
+        description: 'URL segment for the second language'
+        configPath: 'EXTCONF.m2s_site_package.secondLanguageSegment'
+        default: 'it'
+
+      thirdLanguageSegment:
+        type: string
+        value: '%env(TYPO3_INSTALL_THIRD_LANG_SEGMENT)%'
+        description: 'URL segment for the third language'
+        configPath: 'EXTCONF.m2s_site_package.thirdLanguageSegment'
+        default: 'de'
+
+  extractConfig:
+    ignorePaths:
+      - 'BE.debug'
+      - 'BE.explicitADmode'
+      - 'BE.loginSecurityLevel'
+      - 'FE.debug'
+      - 'FE.loginSecurityLevel'
+      - 'GFX.jpg_quality'
+      - 'GFX.processor_allowTemporaryMasksAsPng'
+      - 'GFX.processor_colorspace'
+      - 'GFX.processor_effects'
+      - 'SYS.devIPmask'
+      - 'SYS.displayErrors'
+      - 'SYS.enableDeprecationLog'
+      - 'SYS.enableDeprecationLog'
+      - 'SYS.exceptionalErrors'
+      - 'SYS.sqlDebug'
+      - 'SYS.systemLogLevel'
