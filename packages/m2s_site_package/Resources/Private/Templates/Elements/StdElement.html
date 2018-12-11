@@ -1,0 +1,19 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="Before">
+    <f:if condition="{data.header_layout} && {data.header_layout} != 2">
+        <div class="deco-line"></div>
+    </f:if>
+</f:section>
+
+<f:section name="Content">
+    <f:render partial="StdContent" arguments="{data: data, images: files, isFirst: isFirst}" />
+</f:section>
+
+<f:section name="After">
+    <f:if condition="{data.header_layout} >= 2">
+        <div class="deco-line"></div>
+    </f:if>
+</f:section>
+</html>

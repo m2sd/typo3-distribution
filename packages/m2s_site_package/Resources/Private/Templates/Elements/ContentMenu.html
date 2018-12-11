@@ -1,0 +1,26 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="Content">
+    <div class="content-menu expand">
+        <f:for each="{pages}" as="page" iteration="loop">
+            <section class="subpage scroll-animation" id="p{page.data.uid}">
+                <f:render partial="StdContent" arguments="{
+                    data: {
+                        header: page.data.title,
+                        header_position: 'stylized',
+                        subheader: page.data.subtitle,
+                        bodytext: '<p>{page.data.abstract}</p>',
+                        header_link: page.data.uid,
+                        rowDescription: page.data.author_email
+                    },
+                    images: page.files
+                }" />
+            </section>
+            <f:if condition="!{loop.isLast}">
+                <div class="deco-line"></div>
+            </f:if>
+        </f:for>
+    </div>
+</f:section>
+</html>

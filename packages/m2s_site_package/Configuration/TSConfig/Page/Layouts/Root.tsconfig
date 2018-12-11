@@ -1,7 +1,7 @@
 mod.web_layout.BackendLayouts {
     m2s_root {
         title = Global elements
-        iconIdentifier = tx-m2s-site-layout-root
+        icon = EXT:m2s_site_package/Resources/Public/Icons/Layouts/root.png
         config {
             backend_layout {
                 colCount = 2

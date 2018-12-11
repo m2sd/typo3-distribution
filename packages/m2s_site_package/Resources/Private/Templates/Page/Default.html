@@ -1,0 +1,27 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="Header">
+    <f:format.raw value="{header}" />
+</f:section>
+
+<f:section name="Hero">
+    <f:format.raw value="{hero}" />
+</f:section>
+
+<f:section name="Content">
+    <f:format.raw value="{content}" />
+</f:section>
+
+<f:section name="SharedContent">
+    <f:if condition="{sharedContent}">
+        <div class="page-content shared">
+            <f:format.raw value="{sharedContent}" />
+        </div>
+    </f:if>
+</f:section>
+
+<f:section name="Footer">
+    <f:format.raw value="{footer}" />
+</f:section>
+</html>

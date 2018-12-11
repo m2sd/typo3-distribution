@@ -1,0 +1,45 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Section" />
+
+<f:section name="Content">
+    <footer id="footer" class="page-footer">
+        <div class="above clearfix">
+            <div class="contact-info left wrapper">
+                <f:format.raw value="{contact}" />
+            </div>
+            <div class="service-navigation right wrapper">
+                <f:format.raw value="{service_nav}" />
+            </div>
+        </div>
+
+        <div class="deco-line"></div>
+
+        <div class="below clearfix">
+            <div class="additional-info right wrapper">
+                <div class="connection">
+                    <div class="social wrapper">
+                        <f:format.raw value="{social}" />
+                    </div>
+                    <form class="newsletter-form wrapper" action="{newsletter_action}">
+                        <div class="field-wrap">
+                            <input type="text" placeholder="Newsletter / email" name="email" />
+                            <f:render partial="Button" arguments="{icon: 'greater', type: 'submit'}" />
+                        </div>
+                    </form>
+                </div>
+                <div class="credits clearfix wrapper">
+                    <f:if condition="{settings.vat}">
+                    <span class="vat">
+                        <f:translate key="LLL:EXT:napura_site_package/Resources/Private/Language/locallang.xml:vat_text" /> {settings.vat}
+                    </span>
+                    </f:if>
+                    <f:format.raw value="{backlink}" />
+                </div>
+            </div>
+            <div class="partner left wrapper">
+                <f:format.raw value="{partners}" />
+            </div>
+        </div>
+    </footer>
+</f:section>
+</html>

@@ -1,0 +1,52 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:section name="Subheader">
+    <f:if condition="{isFirst} && {data.colPos} === 0">
+        <f:then>
+            <h2>{data.subheader}</h2>
+        </f:then>
+        <f:else>
+            <h3 class="h2">{data.subheader}</h3>
+        </f:else>
+    </f:if>
+</f:section>
+
+<div class="std-content wrapper{f:if(condition: data.header_position, then: ' {data.header_position}')}{f:if(condition: images, then: ' has-images')}{f:if(condition: data.frame_class, then: ' {data.frame_class}')}">
+    <f:if condition="{data.subheader} && {data.header_position} !== 'stylized'">
+        <f:render section="Subheader" arguments="{_all}" />
+    </f:if>
+
+    <f:if condition="{data.header}">
+        <f:if condition="{isFirst} && {data.colPos} === 0">
+            <f:then>
+                <h1>{data.header}</h1>
+            </f:then>
+            <f:else>
+                <h2 class="h1">{data.header}</h2>
+            </f:else>
+        </f:if>
+    </f:if>
+
+    <f:if condition="{images} && !{data.imageorient}">
+        <f:render partial="Gallery" arguments="{_all}" />
+    </f:if>
+
+    <f:if condition="({data.subheader} && {data.header_position} === 'stylized') || {data.bodytext} || ({images} && {data.imageorient} === 8) || {data.header_link}">
+        <div class="body">
+            <f:if condition="{data.subheader} && {data.header_position} === 'stylized'">
+                <f:render section="Subheader" arguments="{_all}" />
+            </f:if>
+
+            <div class="text-content">
+                <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.bodytext}</f:format.html>
+                <f:if condition="{images} && {data.imageorient} === 8">
+                    <f:render partial="Gallery" arguments="{_all}" />
+                </f:if>
+                <f:if condition="{data.header_link}">
+                    <f:render partial="Button" arguments="{text: data.rowDescription, iconMedium: 'arrow-right', link: data.header_link}" />
+                </f:if>
+            </div>
+        </div>
+    </f:if>
+</div>
+</html>

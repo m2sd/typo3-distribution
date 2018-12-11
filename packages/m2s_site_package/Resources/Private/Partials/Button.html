@@ -1,0 +1,96 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:section name="Contents">
+    <f:if condition="{textXLarge}">
+        <f:then>
+            <span class="text-xlarge">{textXLarge}</span>
+        </f:then>
+        <f:else>
+            <f:if condition="!{icon} && !{iconMedium} && !{iconLarge} && !{iconXLarge} && !{text} && !{textMedium} && !{textLarge}">
+                <span class="text-xlarge">
+                    <f:translate key="LLL:EXT:napura_site_package/Resources/Private/Language/locallang.xml:button_text" />
+                </span>
+            </f:if>
+        </f:else>
+    </f:if>
+    <f:if condition="{textLarge}">
+        <f:then>
+            <span class="text-large">{textLarge}</span>
+        </f:then>
+        <f:else>
+            <f:if condition="!{icon} && !{iconMedium} && !{iconLarge} && !{text} && !{textMedium}">
+                <span class="text-large">
+                    <f:translate key="LLL:EXT:napura_site_package/Resources/Private/Language/locallang.xml:button_text" />
+                </span>
+            </f:if>
+        </f:else>
+    </f:if>
+    <f:if condition="{textMedium}">
+        <f:then>
+            <span class="text-medium">{textMedium}</span>
+        </f:then>
+        <f:else>
+            <f:if condition="!{icon} && !{iconMedium} && !{text}">
+                <span class="text-medium">
+                    <f:translate key="LLL:EXT:napura_site_package/Resources/Private/Language/locallang.xml:button_text" />
+                </span>
+            </f:if>
+        </f:else>
+    </f:if>
+    <f:if condition="{text}">
+        <f:then>
+            <span>{text}</span>
+        </f:then>
+        <f:else>
+            <f:if condition="!{icon}">
+                <span>
+                    <f:translate key="LLL:EXT:napura_site_package/Resources/Private/Language/locallang.xml:button_text" />
+                </span>
+            </f:if>
+        </f:else>
+    </f:if>
+    <f:if condition="{iconXLarge}">
+        <i class="btn-icon-xlarge icon-{iconXLarge}"></i>
+    </f:if>
+    <f:if condition="{iconLarge}">
+        <i class="btn-icon-large icon-{iconLarge}"></i>
+    </f:if>
+    <f:if condition="{iconMedium}">
+        <i class="btn-icon-medium icon-{iconMedium}"></i>
+    </f:if>
+    <f:if condition="{icon}">
+        <i class="btn-icon icon-{icon}"></i>
+    </f:if>
+</f:section>
+
+<f:if condition="{link}">
+    <f:then>
+        <f:link.typolink parameter="{link}" class="button{f:if(condition: class, then: ' {class}')}{f:if(condition: size, then: ' {size}')}{f:if(condition: noBorder, then: ' no-border')}">
+            <f:render section="Contents" arguments="{
+                text: text,
+                textMedium: textMedium,
+                textLarge: textLarge,
+                textXLarge: textXLarge,
+                icon: icon,
+                iconMedium: iconMedium,
+                iconLarge: iconLarge,
+                iconXLarge: iconXLarge
+            }"/>
+        </f:link.typolink>
+    </f:then>
+    <f:else>
+        <button class="button{f:if(condition: class, then: ' {class}')}{f:if(condition: size, then: ' {size}')}{f:if(condition: noBorder, then: ' no-border')}{f:if(condition: icon, then: ' has-icon')}" type="{f:if(condition: type, then: type, else: 'button')}">
+            <f:render section="Contents" arguments="{
+                text: text,
+                textMedium: textMedium,
+                textLarge: textLarge,
+                textXLarge: textXLarge,
+                icon: icon,
+                iconMedium: iconMedium,
+                iconLarge: iconLarge,
+                iconXLarge: iconXLarge
+            }"/>
+        </button>
+    </f:else>
+</f:if>
+</html>

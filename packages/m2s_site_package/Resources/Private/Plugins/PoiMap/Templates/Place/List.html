@@ -1,0 +1,81 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace pm=M2S\PoiMap\ViewHelpers}
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:for each="{places}" as="place">
+        <div class="item">
+            <f:if condition="{place.image}">
+                <f:then>
+                    <div class="img-wrap" data-responsive-bg>
+                        <f:cObject typoscriptObjectPath="lib.RESPONSIVE_IMG" data="{place.image}" currentValueKey="uid"/>
+                    </div>
+                </f:then>
+                <f:else>
+                    <div class="img-wrap">
+                        <pm:map
+                            places="{0: place}"
+                            options="{
+                                disableDefaultUI: 1,
+                                draggable: 0,
+                                scrollwheel: 0,
+                                disableDoubleClickZoom: 1
+                            }"
+                            type="{mapType}"
+                            mapStyles="{mapStyles}"
+                            markerIcon="{markerIcon}"
+                            enableInfo="0"
+                            zoom="{zoom}"
+                            style="width:100%; height: 100%;"
+                        />
+                    </div>
+                </f:else>
+            </f:if>
+            <div class="content">
+                <div class="body">
+                    <f:if condition="{place.alternateName} || {place.name}">
+                        <div class="headers">
+                            <f:spaceless>
+                                <f:if condition="{place.alternateName}">
+                                    <h4>{place.alternateName}</h4>
+                                </f:if>
+                                <f:if condition="{place.name}">
+                                    <h3>{place.name}</h3>
+                                </f:if>
+                            </f:spaceless>
+                        </div>
+                    </f:if>
+                    <f:if condition="{place.description}">
+                        <div class="text-content"><f:format.html>{place.description}</f:format.html></div>
+                    </f:if>
+                    <div class="buttons">
+                        <f:if condition="{place.url}">
+                            <f:render partial="Button" arguments="{class: 'wide', link: place.url}" />
+                        </f:if>
+                        <f:if condition="{f:count(subject: places)} > 1">
+                            <div class="navigation">
+                                <f:render
+                                    partial="Button"
+                                    arguments="{
+                                        class: 'prev',
+                                        icon: 'less'
+                                    }"
+                                />
+                                <f:render
+                                    partial="Button"
+                                    arguments="{
+                                        class: 'next',
+                                        icon: 'greater'
+                                    }"
+                                />
+                            </div>
+                        </f:if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </f:for>
+</f:section>
+
+</html>

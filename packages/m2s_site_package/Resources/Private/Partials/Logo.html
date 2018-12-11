@@ -1,0 +1,19 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="logo">
+    <f:if condition="{data.header_link}">
+        <f:then>
+            <f:link.typolink parameter="{data.header_link}" title="{data.header}">
+                <img
+                    src="{f:uri.image(image: logo)}"
+                    title="{data.header}"
+                    alt="{data.subheader ? data.subheader : data.header}"
+                />
+            </f:link.typolink>
+        </f:then>
+        <f:else>
+            <img src="{f:uri.image(image: logo)}" title="{data.header}" alt="{data.subheader ? data.subheader : data.header}" />
+        </f:else>
+    </f:if>
+</div>
+</html>

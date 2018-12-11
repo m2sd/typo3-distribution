@@ -1,0 +1,29 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:if condition="{data.header_position} == 'card'">
+    <f:then>
+        <div class="element card{f:if(condition: data.header_layout, then: ' frame{data.header_layout}')}" id="c{data.uid}">
+            <f:if condition="{data._LOCALIZED_UID}">
+                <a id="c{data._LOCALIZED_UID}"></a>
+            </f:if>
+            <f:render section="Before" optional="1" />
+
+            <f:render section="Content" />
+
+            <f:render section="After" optional="1" />
+        </div>
+    </f:then>
+    <f:else>
+        <f:render section="Before" optional="1" />
+
+        <div class="element" id="c{data.uid}">
+            <f:if condition="{data._LOCALIZED_UID}">
+                <a id="c{data._LOCALIZED_UID}"></a>
+            </f:if>
+            <f:render section="Content" />
+        </div>
+
+        <f:render section="After" optional="1" />
+    </f:else>
+</f:if>
+</html>

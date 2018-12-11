@@ -1,0 +1,31 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Section" />
+
+<f:section name="Content">
+    <div class="content">
+        <f:if condition="data.subheader">
+            <div class="intro">{data.header}</div>
+        </f:if>
+
+        <f:if condition="{slogans}">
+            <h1 id="slogans">
+                <f:for each="{slogans}" as="slogan">
+                    <span>{slogan}</span>
+                </f:for>
+            </h1>
+
+            <div class="h1">
+                <span id="typing"></span>
+            </div>
+        </f:if>
+
+        <f:if condition="{data.bodytext}">
+            <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.bodytext}</f:format.html>
+        </f:if>
+
+        <f:if condition="{data.header_link}">
+            <f:render partial="Button" arguments="{link: data.header_link, text: data.subheader, iconMedium: 'arrow-right'}" />
+        </f:if>
+    </div>
+</f:section>
+</html>

@@ -1,0 +1,32 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="Content">
+    <f:if condition="{data.header_link}">
+        <f:then>
+            <blockquote class="citation wrapper" cite="{data.header_link}">
+                <span>
+                    <f:format.raw value="{data.bodytext}" />
+                </span>
+                <f:if condition="{data.header}">
+                    <footer>
+                        - <f:link.typolink target="_bank" parameter="{data.header_link}" title="{data.header}">{data.header}</f:link.typolink>
+                    </footer>
+                </f:if>
+            </blockquote>
+        </f:then>
+        <f:else>
+            <blockquote class="citation wrapper">
+                <span>
+                    <f:format.raw value="{data.bodytext}" />
+                </span>
+                <f:if condition="{data.header}">
+                    <footer>
+                        - <span>{data.header}</span>
+                    </footer>
+                </f:if>
+            </blockquote>
+        </f:else>
+    </f:if>
+</f:section>
+</html>

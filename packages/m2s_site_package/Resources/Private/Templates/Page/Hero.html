@@ -1,0 +1,54 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Section" />
+
+<f:section name="Content">
+    <f:if condition="{map} || {files}">
+        <div id="hero" class="hero">
+            <f:if condition="{map}">
+                <f:then>
+                    <f:format.raw value="{map}" />
+                </f:then>
+                <f:else>
+                    <f:if condition="{content}">
+                        <div id="hero-content" class="overlay">
+                            <f:format.raw value="{content}" />
+                        </div>
+                    </f:if>
+                    <f:if condition="{files}">
+                        <f:if condition="{files.0}">
+                            <f:then>
+                                <div
+                                    class="img-container gallery"
+                                    data-slideshow="1"
+                                >
+                                    <f:for each="{files}" as="file">
+                                        <div class="img-wrap" data-responsive-bg>
+                                            <f:cObject
+                                                typoscriptObjectPath="lib.RESPONSIVE_IMG"
+                                                data="{file.properties}"
+                                                currentValueKey="uid"
+                                            />
+                                        </div>
+                                    </f:for>
+                                </div>
+                            </f:then>
+                            <f:else>
+                                <div class="img-container gallery">
+                                    <div class="img-wrap" data-responsive-bg>
+                                        <f:cObject
+                                            typoscriptObjectPath="lib.RESPONSIVE_IMG_FROM_URL"
+                                            data="{url: files}"
+                                            currentValueKey="url"
+                                        />
+                                    </div>
+                                </div>
+                            </f:else>
+                        </f:if>
+                    </f:if>
+                </f:else>
+            </f:if>
+        </div>
+    </f:if>
+</f:section>
+
+</html>

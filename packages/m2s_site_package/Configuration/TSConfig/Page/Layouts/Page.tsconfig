@@ -1,7 +1,7 @@
 mod.web_layout.BackendLayouts {
     m2s_page {
         title = Page
-        iconIdentifier = tx-m2s-site-layout-page
+        icon = EXT:m2s_site_package/Resources/Public/Icons/Layouts/page.png
         config {
             backend_layout {
                 colCount = 1

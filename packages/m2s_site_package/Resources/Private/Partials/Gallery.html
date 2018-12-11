@@ -1,0 +1,116 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:section name="Caption"><f:spaceless>
+    <f:if condition="{useTitleOrAlt}">
+        <f:then>
+            <f:if condition="{image.description} || {image.title} || {image.alternative}">
+                <span class="caption">{f:if(condition: image.description, then: image.description, else: '{f:if(condition: image.title, then: image.title, else: image.alternative)}')}</span>
+            </f:if>
+        </f:then>
+        <f:else>
+            <f:if condition="{image.description}">
+                <span class="caption">{image.description}</span>
+            </f:if>
+        </f:else>
+    </f:if>
+</f:spaceless></f:section>
+
+<f:section name="Content"><f:spaceless>
+    <div class="item">
+        <div class="img-wrap" data-responsive-bg>
+            <f:cObject typoscriptObjectPath="lib.RESPONSIVE_IMG" data="{image.properties}" currentValueKey="uid" />
+        </div>
+        <div class="pager">{loop.cycle} / {loop.total}</div>
+        <div class="content">
+            <div class="body">
+                <f:if condition="{image.alternative} || {image.title}">
+                    <div class="headers">
+                        <f:spaceless>
+                            <f:if condition="{image.alternative}">
+                                <h4>{image.alternative}</h4>
+                            </f:if>
+                            <f:if condition="{image.title}">
+                                <h3>{image.title}</h3>
+                            </f:if>
+                        </f:spaceless>
+                    </div>
+                </f:if>
+                <f:if condition="{image.description}">
+                    <div class="text-content"><p>{image.description}</p></div>
+                </f:if>
+                <div class="buttons">
+                    <f:if condition="{image.link}">
+                        <f:render partial="Button" arguments="{class: 'wide', link: image.link}" />
+                    </f:if>
+                    <f:if condition="{f:count(subject: images)} > 1">
+                        <div class="navigation">
+                            <f:render partial="Button" arguments="{
+                                    class: 'prev',
+                                    icon: 'less'
+                                }" />
+                            <f:render partial="Button" arguments="{
+                                    class: 'next',
+                                    icon: 'greater'
+                                }" />
+                        </div>
+                    </f:if>
+                </div>
+            </div>
+        </div>
+    </div>
+</f:spaceless></f:section>
+
+<f:if condition="{data.layout} < 2">
+    <f:then>
+        <div class="img-container gallery"
+             data-cols="{data.imagecols}"
+             data-grid="{data.layout}"
+             data-zoom="{data.image_zoom}"
+             {f:if(condition:data.imageheight,then:'data-height="{data.imageheight}"')}
+        >
+            <f:for each="{images}" as="image">
+                <f:if condition="{data.image_zoom}">
+                    <f:then>
+                        <a href="{image.originalFile.publicUrl}" class="img-wrap" title="{f:if(condition: image.title, then: image.title, else: image.alternative)}" data-sub-html=".caption">
+                            <f:cObject typoscriptObjectPath="lib.RESPONSIVE_IMG" data="{image.properties}" currentValueKey="uid" />
+                            <f:render section="Caption" arguments="{useTitleOrAlt: data.imageborder, image: image}"/>
+                        </a>
+                    </f:then>
+                    <f:else if="{image.link}">
+                        <a href="{image.link}" class="img-wrap" title="{f:if(condition: image.title, then: image.title, else: image.alternative)}">
+                            <f:cObject typoscriptObjectPath="lib.RESPONSIVE_IMG" data="{image.properties}" currentValueKey="uid" />
+                            <f:render section="Caption" arguments="{useTitleOrAlt: data.imageborder, image: image}"/>
+                        </a>
+                    </f:else>
+                    <f:else>
+                        <div class="img-wrap">
+                            <f:cObject typoscriptObjectPath="{f:if(condition:'{data.header_position} === \'stylized\'',then:'lib.RESPONSIVE_IMG_STYLIZED',else:'lib.RESPONSIVE_IMG')}" data="{image.properties}" currentValueKey="uid" />
+                            <f:render section="Caption" arguments="{useTitleOrAlt: data.imageborder, image: image}"/>
+                        </div>
+                    </f:else>
+                </f:if>
+            </f:for>
+        </div>
+    </f:then>
+    <f:else>
+        <div
+            class="img-container content{f:if(condition: '{data.space_before_class}', then: ' {data.space_before_class}')}"
+            {f:if(condition: '{data.layout} == 3', then: 'data-full-width="1"')}
+        >
+            <f:for each="{images}" as="image" iteration="loop">
+                <f:if condition="{data.layout} == 3">
+                    <f:then>
+                        <div class="spacer">
+                            <f:render section="Content" arguments="{_all}" />
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <f:render section="Content" arguments="{_all}" />
+                    </f:else>
+                </f:if>
+            </f:for>
+        </div>
+    </f:else>
+</f:if>
+
+</html>

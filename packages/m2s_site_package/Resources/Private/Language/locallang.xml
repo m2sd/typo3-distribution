@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+  <meta type="array">
+    <type>module</type>
+    <description>Language labels for the napura_site_package</description>
+  </meta>
+  <data type="array">
+    <languageKey index="default" type="array">
+      <label index="date_format">d/m/Y</label>
+      <label index="button_text">More</label>
+      <label index="if_urgent">if urgent</label>
+      <label index="vat_text">VAT:</label>
+      <label index="request">Request</label>
+      <label index="book">Book</label>
+      <label index="arrival">Arrival</label>
+      <label index="departure">Departure</label>
+    </languageKey>
+    <languageKey index="de" type="array">
+      <label index="date_format">d.m.Y</label>
+      <label index="button_text">Mehr</label>
+      <label index="if_urgent">wenn dringend</label>
+      <label index="vat_text">MwSt. Nr.:</label>
+      <label index="request">Anfragen</label>
+      <label index="book">Buchen</label>
+      <label index="arrival">Ankunft</label>
+      <label index="departure">Abfahrt</label>
+    </languageKey>
+    <languageKey index="it" type="array">
+      <label index="date_format">d/m/Y</label>
+      <label index="button_text">Di piú</label>
+      <label index="if_urgent">per urgenze</label>
+      <label index="vat_text">Part. IVA:</label>
+      <label index="request">Richiedi</label>
+      <label index="book">Prenota</label>
+      <label index="arrival">Arrivo</label>
+      <label index="departure">Partenza</label>
+    </languageKey>
+  </data>
+</T3locallang>

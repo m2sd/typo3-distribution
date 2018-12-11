@@ -1,0 +1,37 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Section" />
+
+<f:section name="Content">
+    <header id="header" class="page-header">
+        <div class="wrapper">
+            <div class="clearfix">
+                <f:render partial="Logo" arguments="{data: logo.0.data, logo: logo.0.files.0}" />
+                <f:render partial="Button" arguments="{class: 'menu-button hide-large-up', noBorder: true, size: 'small', icon: 'menu'}" />
+                <div class="request-form clearfix">
+                    <form id="header-form" method="get" class="clearfix" action="{booking_action}" data-request-url="{request_action}">
+                        <div class="show-large-up">
+                            <div class="date-range-container">
+                                <div class="flatpickr-date-wrap">
+                                    <input type="text" class="flatpickr" data-date-format-visual="{f:translate(key: 'LLL:EXT:napura_site_package/Resources/Private/Language/locallang.xml:date_format')}" placeholder="{f:translate(key: 'LLL:EXT:napura_site_package/Resources/Private/Language/locallang.xml:arrival')}" name="arrival">
+                                    <i class="icon-calendar"></i>
+                                </div>
+                                <div class="flatpickr-date-wrap">
+                                    <input type="text" class="flatpickr" data-date-format-visual="{f:translate(key: 'LLL:EXT:napura_site_package/Resources/Private/Language/locallang.xml:date_format')}" placeholder="{f:translate(key: 'LLL:EXT:napura_site_package/Resources/Private/Language/locallang.xml:departure')}" name="departure">
+                                    <i class="icon-calendar"></i>
+                                </div>
+                            </div>
+                            <f:render partial="Button" arguments="{class: 'request', size: 'small', text: '{f:translate(key: \'LLL:EXT:napura_site_package/Resources/Private/Language/locallang.xml:request\')}'}" />
+                        </div>
+                        <f:render partial="Button" arguments="{type: 'submit', size: 'small', text: '{f:translate(key: \'LLL:EXT:napura_site_package/Resources/Private/Language/locallang.xml:book\')}'}" />
+                    </form>
+                </div>
+            </div>
+            <nav class="navigation-container clearfix">
+                <f:format.raw value="{main_nav}" />
+                <f:format.raw value="{lang_nav}" />
+                <f:format.raw value="{tel_link}" />
+            </nav>
+        </div>
+    </header>
+</f:section>
+</html>

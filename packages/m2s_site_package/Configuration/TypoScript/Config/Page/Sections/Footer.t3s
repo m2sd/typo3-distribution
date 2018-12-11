@@ -258,7 +258,7 @@ page.10.variables {
 
             backlink = IMAGE
             backlink {
-                file = EXT:m2s_site_package/Resources/Public/Images/login.svg
+                file = EXT:m2s_site_package/Resources/Public/Icons/Extension.png
                 file {
                     width = 100
                     height = 20

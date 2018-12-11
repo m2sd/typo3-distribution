@@ -1,0 +1,33 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:spaceless>
+    <f:render section="Before" optional="1">
+        <f:if condition="{settings.gtm_id}">
+            <f:render partial="TagManager" arguments="{id: settings.gtm_id}" />
+        </f:if>
+    </f:render>
+
+    <div id="page">
+        <div id="scroll-indicator">
+            <div id="scroll" class="offset"></div>
+        </div>
+
+        <f:render section="Header" />
+
+        <main class="main">
+            <f:render section="Hero" optional="1" />
+            <div class="page-content">
+                <f:render section="Content" />
+            </div>
+            <f:render section="SharedContent" optional="1" />
+        </main>
+
+        <f:render section="Footer" />
+
+        <f:format.raw value="{cookie_modal}" />
+    </div>
+
+    <f:render section="After" optional="1"/>
+</f:spaceless>
+
+</html>

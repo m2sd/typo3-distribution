@@ -1,0 +1,34 @@
+<html xmlns:f="https://xsd.helhum.io/ns/typo3/cms-fluid/master/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace pm=M2S\PoiMap\ViewHelpers}
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <pm:map
+        places="{places}"
+        class="places-map"
+        options="{
+            disableDefaultUI: 1
+        }"
+        markerIcon="{markerIcon}"
+        type="{mapType}"
+        enableInfo="{showInfo}"
+        enableInfoSingle="{showInfoSingle}"
+        infoOptions="{infoOptions}"
+        mapStyles="{mapStyles}"
+        center="{center}"
+        zoom="{zoom}"
+    >
+        <div class="place-card wrapper">
+            <f:if condition="{place.image}">
+                <div class="img-wrap" data-responsive>
+                    <f:image image="{place.image}" width="280c" height="157c" alt="{place.alternateName}" title="{place.name}"/>
+                </div>
+            </f:if>
+
+            <h3>{place.name}</h3>
+
+            <f:format.html>{place.description}</f:format.html>
+        </div>
+    </pm:map>
+</f:section>

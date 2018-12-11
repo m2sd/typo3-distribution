@@ -1,7 +1,7 @@
 mod.web_layout.BackendLayouts {
     m2s_places {
         title = Points of interest
-        icon = EXT:poi_map/Resources/Public/Icons/Extension.png
+        icon = EXT:m2s_site_package/Resources/Public/Icons/Layouts/places.png
         config {
             backend_layout {
                 colCount = 1
